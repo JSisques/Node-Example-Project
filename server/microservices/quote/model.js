@@ -15,7 +15,9 @@ module.exports = {
         if(!isNaN(id)) return dao.getQuote(id)
 
         else return new Promise((resolve, reject) =>{
-            resolve(error)
+            resolve({
+                error: "El id " + id + " no es un número"
+            })
         })
     },
 
