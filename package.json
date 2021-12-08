@@ -1,0 +1,21 @@
+{
+  "name": "node-example-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSisques/Node-Example-Project.git"
+  },
+  "keywords": [],
+  "author": "Javier Plaza Sisqués",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JSisques/Node-Example-Project/issues"
+  },
+  "homepage": "https://github.com/JSisques/Node-Example-Project#readme"
+}
