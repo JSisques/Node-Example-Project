@@ -3,11 +3,20 @@ const Quote = require('../../entities/quote')
 
 module.exports = {
 
-    getRandomQuote() {
+    getAllQuotes() {
 
-        var promise = dao.getQuote()
+        var promise = dao.getAllQuotes()
 
         return promise
+    },
+
+    getQuote(id){
+
+        if(!isNaN(id)) return dao.getQuote(id)
+
+        else return new Promise((resolve, reject) =>{
+            resolve(error)
+        })
     },
 
     save(json) {

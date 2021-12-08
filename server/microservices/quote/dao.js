@@ -13,7 +13,7 @@ module.exports = {
         return promise
     },
 
-    getQuote(){
+    getAllQuotes(){
 
         var query = queries.SELECT_ALL_QUOTES
         console.log(query)
@@ -23,4 +23,12 @@ module.exports = {
 
         return promise
     },
+
+    getQuote(id){
+        
+        var query = queries.SELECT_QUOTE_BY_ID.replace('@id', id)
+        console.log(query)
+        
+        return mysql.executeQuery(query)
+    }
 }

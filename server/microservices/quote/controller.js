@@ -8,10 +8,10 @@ module.exports = {
         return res.send('Hola')
     },
 
-    randomQuote(req, res) {
+    allQuotes(req, res) {
 
         //Obtenemos la promesa
-        var promise = model.getRandomQuote()
+        var promise = model.getAllQuotes()
 
         //Si todo ha ido bien obtenemos el valor almacenado en result y lo enviamos, si hay algun error enviamos dicho error
         promise.then((result) => {
@@ -35,5 +35,23 @@ module.exports = {
         }).catch((err) => {
             return res.send(err)
         })  
+    },
+
+    getQuote(req, res){
+
+        var id = req.params.ID
+        console.log(id)
+
+        var promise = model.getQuote(id)
+
+        promise.then((result) => {
+            console.log(result)
+            return res.send(result)
+        }).catch((err) => {
+            console.log(err)
+            return res.send(err)
+        })
+
+
     }
 }
