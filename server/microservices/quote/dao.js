@@ -8,9 +8,9 @@ module.exports = {
         var query = queries.INSERT_QUOTE.replace('@quote', quote.quote).replace('@author', quote.author)
         console.log(query)
         
-        mysql.executeQuery(query)
+        var promise = mysql.executeQuery(query)
 
-        return quote
+        return promise
     },
 
     getQuote(){
@@ -18,10 +18,9 @@ module.exports = {
         var query = queries.SELECT_ALL_QUOTES
         console.log(query)
         
-        var result = mysql.executeQuery(query)
+        //Obtenemos una promesa la cual pasaremos al modelo
+        var promise = mysql.executeQuery(query)
 
-        console.log(result)
-
-        return result
+        return promise
     },
 }

@@ -3,24 +3,37 @@ const constants = require('../../util/constants')
 
 module.exports = {
 
-    greetings(req, res){
+    greetings(req, res) {
         console.log("hello")
         return res.send('Hola')
     },
 
-    randomQuote(req, res){
+    randomQuote(req, res) {
 
-        var result = model.getRandomQuote()
-        console.log(result)
+        //Obtenemos la promesa
+        var promise = model.getRandomQuote()
 
-        return res.send(result)
+        //Si todo ha ido bien obtenemos el valor almacenado en result y lo enviamos, si hay algun error enviamos dicho error
+        promise.then((result) => {
+            console.log(result)
+            return res.send(result)
+        }).catch((err) => {
+            return res.send(err)
+        })  
+
+
     },
 
-    saveQuote(req, res){
+    saveQuote(req, res) {
 
         var body = req.body
-        var data = model.save(body)
-        
-        return res.send(data)
+        var promise = model.save(body)
+
+        promise.then((result) => {
+            console.log(result)
+            return res.send(result)
+        }).catch((err) => {
+            return res.send(err)
+        })  
     }
 }

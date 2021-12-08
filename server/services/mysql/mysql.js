@@ -23,22 +23,25 @@ module.exports = {
         return connection.end()
     },
 
-    executeQuery(query) {
+    async executeQuery(query) {
         var connection = this.connect()
 
-        var result;
+        //Utilizamos promesas al ser un proceso asincrono el metodo query de la libreria mysql
+        const promise = new Promise((resolve, reject) => {
 
-        const a = connection.query(query, (err, results, fields)=>{
-            if (err) throw err;
-            console.log('The solution is: ', results);
-            
-            result = results
+            connection.query(query, (err, results, fields) => {
+                if (err) return reject(err);
 
+                //console.log('The solution is: ', results);
+
+                return resolve(results)
+
+            })
         })
 
-        this.disconnect(connection)
+        //Devolvemos la promesa que en un futuro tendrá los datos correspondientes de la query
+        return promise
 
-        return result
     },
 
     delete() {

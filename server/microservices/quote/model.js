@@ -5,9 +5,9 @@ module.exports = {
 
     getRandomQuote() {
 
-        var result = dao.getQuote()
+        var promise = dao.getQuote()
 
-        return result
+        return promise
     },
 
     save(json) {
@@ -21,9 +21,10 @@ module.exports = {
         var quote = new Quote(quote, author)
         quote.toString()
 
-        dao.insertQuote(quote)
+        //Obtenemos la promesa y se la pasamos al controlador
+        var promise = dao.insertQuote(quote)
 
-        return json
+        return promise
     }
 
 }
