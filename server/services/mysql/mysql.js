@@ -27,7 +27,7 @@ module.exports = {
         var connection = this.connect()
 
         //Utilizamos promesas al ser un proceso asincrono el metodo query de la libreria mysql
-        const promise = new Promise((resolve, reject) => {
+        const promise = await new Promise((resolve, reject) => {
 
             connection.query(query, (err, results, fields) => {
                 if (err) return reject(err);

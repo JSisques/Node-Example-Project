@@ -3,25 +3,23 @@ const Quote = require('../../entities/quote')
 
 module.exports = {
 
-    getAllQuotes() {
+    async getAllQuotes() {
 
-        var promise = dao.getAllQuotes()
+        var result = await dao.getAllQuotes()
+        console.log(result)
 
-        return promise
+        return result
     },
 
-    getQuote(id){
+    async getQuote(id){
 
-        if(!isNaN(id)) return dao.getQuote(id)
+        if(!isNaN(id)) return await dao.getQuote(id)
 
-        else return new Promise((resolve, reject) =>{
-            resolve({
-                error: "El id " + id + " no es un número"
-            })
-        })
+        else return "El id " + id + " no es un número"
+        
     },
 
-    save(json) {
+    async save(json){
 
         console.log(json)
 
@@ -33,9 +31,9 @@ module.exports = {
         quote.toString()
 
         //Obtenemos la promesa y se la pasamos al controlador
-        var promise = dao.insertQuote(quote)
+        var result = await dao.insertQuote(quote)
 
-        return promise
+        return result
     }
 
 }

@@ -3,55 +3,32 @@ const constants = require('../../util/constants')
 
 module.exports = {
 
-    greetings(req, res) {
-        console.log("hello")
-        return res.send('Hola')
-    },
-
-    allQuotes(req, res) {
+     async allQuotes(req, res) {
 
         //Obtenemos la promesa
-        var promise = model.getAllQuotes()
+        var result = await model.getAllQuotes()
+        console.log(result)
 
-        //Si todo ha ido bien obtenemos el valor almacenado en result y lo enviamos, si hay algun error enviamos dicho error
-        promise.then((result) => {
-            console.log(result)
-            return res.send(result)
-        }).catch((err) => {
-            return res.send(err)
-        })  
-
-
+        return res.send(result)
     },
 
-    saveQuote(req, res) {
+    async saveQuote(req, res) {
 
         var body = req.body
-        var promise = model.save(body)
+        var result = await model.save(body)
+        console.log(result)
 
-        promise.then((result) => {
-            console.log(result)
-            return res.send(result)
-        }).catch((err) => {
-            return res.send(err)
-        })  
+        return res.send(result)
     },
 
-    getQuote(req, res){
+    async getQuote(req, res) {
 
         var id = req.params.ID
         console.log(id)
 
-        var promise = model.getQuote(id)
+        var result = await model.getQuote(id)
+        console.log(result)
 
-        promise.then((result) => {
-            console.log(result)
-            return res.send(result)
-        }).catch((err) => {
-            console.log(err)
-            return res.send(err)
-        })
-
-
+        return res.send(result)
     }
 }

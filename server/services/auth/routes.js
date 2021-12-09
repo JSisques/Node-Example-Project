@@ -3,8 +3,7 @@ const controller = require('./controller')
 
 const router = express.Router();
 
-router.get('/quote', controller.allQuotes)
-router.post('/quote', controller.saveQuote)
-router.get('/quote/:ID', controller.getQuote)
+router.post('/auth/login', controller.login)
+router.post('/auth/signup', controller.signUp)
 
 module.exports = router

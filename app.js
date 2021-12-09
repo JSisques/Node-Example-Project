@@ -14,6 +14,7 @@ app.set('port', 6969)
 //Rutas
 app.use(require('./server/microservices/quote/routes'))
 app.use(require('./server/microservices/test/routes'))
+app.use(require('./server/services/auth/routes'))
 
 // Servimos archivos estáticos en la carpeta public
 //app.use(express.static(path.join(__dirname + '/public')))
